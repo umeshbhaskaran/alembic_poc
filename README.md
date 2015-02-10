@@ -1,5 +1,5 @@
 ﻿# alembic_poc
-POC of alembic database migration tool
+POC on alembic database migration tool
 
 # Steps for handling migration
 1. Make changes to your model --> alembic_poc/models/skills.py
