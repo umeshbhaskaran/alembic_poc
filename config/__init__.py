@@ -1,0 +1,1 @@
+#Initilizes config vars
