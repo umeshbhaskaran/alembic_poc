@@ -1,22 +1,32 @@
 ﻿# alembic_poc
 POC on alembic database migration tool
 
-# Steps for handling migration
-1. Make changes to your model --> alembic_poc/models/skills.py
-2. Navigate to the folder where alembic is initialized or where alembic.ini is available --> alembic_poc/migration/ in this case.
-3. Run the command -- > alembic revision --autogenerate -m <your_comment>.
-    1. This will generate the migration file <version_your_comment.py> under the folder alembic_poc/migration/alembic/versions.
-4. Offline migration.
-    1. When we need to run migration in offline mode i.e without affecting actual database we can create migration files (sql files) which can be used later.
-    2. Run the command and redirect the output to any sql file
-       alembic upgrade +1 --sql > <your_sql_file>
-5. Online migration
-    1. When we need to run migration online. Run command alembic upgrade head --> this will upgrade database to the latest version or
-    2. Run command alembic upgrade <version_no> to upgrade to a specific higher version.
-6. Downgrading
-    Run command alembic downgrade base to revert all updates.
-    Run command alembic downgrade -1 to downgrade one version lower.
-    Run command alembic downgrade <version_no> to downgrade to a specific version.
+# Installation
 
-# Notes
-1. alembic_poc/migration/alembic/eny.py script needs to be modified to accept your own datbase connection and metadata of your models.
+Install released versions of Alembic from the Python package index with pip or a similar tool:
+
+pip install alembic
+
+Installation via source distribution is via the setup.py script:
+
+python setup.py install
+
+The install will add the alembic command to the environment. All operations with Alembic then proceed through the usage of this command.
+
+# Dependencies
+
+Alembic’s install process will ensure that SQLAlchemy is installed, in addition to other dependencies. Alembic will work with SQLAlchemy as of version 0.7.3. The latest version of SQLAlchemy within the 0.7, 0.8, or more recent series is strongly recommended.
+
+Alembic supports Python versions 2.6 and above.
+
+#Project Status
+
+Alembic is currently in beta status and is expected to be fairly stable. Users should take care to report bugs and missing features (see Bugs) on an as-needed basis. It should be expected that the development version may be required for proper implementation of recently repaired issues in between releases; the latest master is always available at https://bitbucket.org/zzzeek/alembic/get/master.tar.gz.
+
+#Community Support
+
+Alembic is developed by Mike Bayer, and is loosely associated with the SQLAlchemy and Pylons projects.
+
+User issues, discussion of potential bugs and features should be posted to the Alembic Google Group at sqlalchemy-alembic.
+
+Bugs and feature enhancements to Alembic should be reported on the Bitbucket issue tracker.
